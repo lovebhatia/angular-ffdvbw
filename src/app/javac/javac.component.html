@@ -1,0 +1,91 @@
+<html>
+  <!--
+  <div fxLayout="row">
+      <div fxFlex>First item in column</div>
+      <div fxFlex>First item in column</div>
+      <div fxFlex>First item in column</div>
+  </div>
+  -->
+  <div fxLayout="row">
+    <div fxFlex="20">
+  
+  
+  
+      <mat-accordion>
+          
+        <mat-expansion-panel *ngFor="let topic of topics first as isFirst" (opened)="panelOpenState = true"
+                     (closed)="panelOpenState = false" [expanded]="isFirst">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{topic.topicName}}
+            </mat-panel-title>
+            <mat-panel-description >
+             
+            </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p  *ngFor="let sub of topic.topicsSet">
+              <a   name="vvv" [routerLink]="['/java',topic.topicId,topic.topicName,sub.subTopicName,sub.subTopicId]" ng-click="getsubTopicQuestion(sub.subTopicId)" style="color:blue;text-align:center">{{sub.subTopicName}}</a>
+            </p>
+            
+            
+          </mat-expansion-panel>
+          </mat-accordion>
+  
+  
+  
+  
+  
+  
+  
+  
+    </div>
+    <div fxFlex="1"></div>
+    <div fxFlex="60">
+    <mat-accordion >
+    <mat-expansion-panel *ngFor="let link of questions first as isFirst" 
+     (opened)="getAnswer(link.question_id)"
+                         (closed)="panelOpenState = false" [expanded]="isFirst">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{link.questions_name}} 
+        </mat-panel-title>
+        <mat-panel-description>
+          
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    
+      <div  style="color:blue">
+      <div innerHTML="{{answers}}"></div>
+      </div>
+     
+      
+      
+    </mat-expansion-panel>
+  </mat-accordion>
+    </div>
+    <div fxFlex="1"></div>
+     <div fxFlex>
+    <mat-card>Simple card</mat-card>
+    </div>
+    
+  </div>
+
+  <!--
+  <div fxLayout="column">
+    <div fxFlex>First item in column</div>
+    
+  
+  </div>
+-->
+
+  </html>
+
+
+     
+      
+     <!--<div  style="color:blue"*ngFor="let light of link.answers">
+      <div>image</div>
+      </div>
+      <div  style="color:blue"*ngFor="let light of link.answers">
+      <div>add</div>
+      </div>-->

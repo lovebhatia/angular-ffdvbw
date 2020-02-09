@@ -1,0 +1,109 @@
+<html>
+<!--<div fxLayout="row">
+	  <div fxFlex>First item in column</div>
+	  <div fxFlex>First item in column</div>
+	  <div fxFlex>First item in column</div>
+</div>-->
+
+<div fxLayout="row">
+  <div fxFlex="20">
+<mat-accordion  *ngFor="let course of courses">
+<mat-expansion-panel 
+ *ngFor="let topic of course.topics"
+ beforePanelClosed
+ (opened)="panelOpenState = true"
+ (closed)="panelOpenState = false" [expanded]="isFirst">
+
+ <!--<mat-accordion>
+  <mat-expansion-panel
+   *ngFor="let topic of topics first as isFirst"
+   beforePanelClosed
+   (opened)="panelOpenState = true"
+   (closed)="panelOpenState = false"  [expanded]="isFirst">
+ -->
+
+
+				  <mat-expansion-panel-header >
+					<mat-panel-title >
+							<a > {{topic.topicName}}</a>
+					</mat-panel-title>
+					<mat-panel-description >
+					 
+					</mat-panel-description>
+          </mat-expansion-panel-header>
+          <div ccCardHover>
+				  	<p   *ngFor="let sub of topic.topicsSet">
+            <a  [routerLink]="[course.courseName,course.courseId,topic.topicName,topic.topicId,sub.subTopicName,sub.subTopicId]" name="vvv" (click)="getsubTopicQuestion(sub.subTopicId)" style="color:blue;text-align:center">{{sub.subTopicName}}</a> 
+            
+					</p>
+        </div>
+				
+				</mat-expansion-panel>
+			  </mat-accordion>
+
+
+</div>
+  <div fxFlex="1"></div>
+<div fxFlex="65">
+<mat-accordion>
+
+
+  <mat-expansion-panel *ngFor="let link of questions first as isFirst" [expanded]="isFirst" id ="locate_{{link.question_id}}" (opened)="getAnswer(link.question_id)">
+    <mat-expansion-panel-header class="disable_ripple">
+      <mat-panel-title>
+    <!--<p [routerLink]="[link.question_id]"  
+     >{{link.questions_name}}</p >-->
+
+
+     <div [innerHTML]="link.questions_name | safeHtml">
+
+      
+       
+      
+      
+     </div>
+
+   
+    
+    </mat-panel-title>
+      <mat-panel-description>
+        
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="container">
+   <div style="color:blue">
+   <!-- <div  ccCardHover innerHTML="{{answers}}"></div>-->
+   <div  [innerHTML]="answers | safeHtml">
+
+
+  </div>
+    
+    </div>
+    </div>
+  
+	  
+  </mat-expansion-panel>
+  </mat-accordion>
+  <div >
+  
+</div>
+</div>
+
+<div fxFlex="1"></div>
+ <div fxFlex="15">
+<mat-card>Simple card</mat-card>
+</div>
+
+</div>
+<div fxLayout="column">
+<div fxFlex>First item in column</div>
+
+
+</div>
+</html>
+
+
+
+
+
+

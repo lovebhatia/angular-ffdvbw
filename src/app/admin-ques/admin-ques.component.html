@@ -1,0 +1,178 @@
+<div fxLayout="row">
+  <div fxFlex="100">
+    <mat-card class="example-card">
+    <!--<mat-card-header>
+      <mat-card-title>Add Course</mat-card-title>
+    </mat-card-header>-->
+    <mat-card-content>
+
+      <div class="form-group">
+        <label >Course</label>
+        <mat-select  class="form-control"  id="course"
+                required
+                [(ngModel)]="model1.courseName" (selectionChange)="loadMasterValues(model1.courseName)"  name="power">
+                <mat-option value="-Select-">--Select--</mat-option>
+          <mat-option *ngFor="let course of courselist" [value]="course">{{course}}</mat-option>
+        </mat-select>
+
+
+
+        
+      </div>
+
+      <div class="form-group">
+        
+          <label> Topic Name</label>
+          <mat-select  class="form-control"  id="topic"
+                  required
+                  [(ngModel)]="modelTopic.topicName" (selectionChange)="loadMasterValues1(modelTopic.topicName)"  name="topicName">
+                  <mat-option value="-Select-">--Select--</mat-option>
+            <mat-option *ngFor="let topic of topicList                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            " [value]="topic">{{topic}}</mat-option>
+          </mat-select>
+     
+     
+      </div>
+      <div class="form-group">
+        <label>Sub Topic Name</label>
+        <mat-select class="form-control"  id="subTopic"
+                required
+                [(ngModel)]="modelSubTopic.subTopicName" name="subTopic">
+          <mat-option *ngFor="let subTopic of SubTopicList" [value]="subTopic">{{subTopic}}</mat-option>
+        </mat-select>
+      </div>
+
+      <div class="form-group">
+            <label for="title">Question</label>
+            <!--<input type="text" class="form-control" id="title" required [(ngModel)]="modelQues.questions_name" name="title">-->
+            <ejs-richtexteditor id='iframeRTE1' [iframeSettings]='iframe' #rte [insertImageSettings]='imageSetting' [(ngModel)]="modelQues.questions_name"  (toolbarClick)='onToolbarClick($event)'  [toolbarSettings]='tools'></ejs-richtexteditor>
+
+          
+      </div>
+
+      <div>
+        <label for="url">Answer</label>
+            
+            <ejs-richtexteditor id='iframeRTE2'  #rte [insertImageSettings]='imageSetting' [(ngModel)]="modelans.ans"  (toolbarClick)='onToolbarClick($event)'  [toolbarSettings]='tools'></ejs-richtexteditor>
+           
+          
+  </div>
+  <!--
+ <ckeditor [(ngModel)]="ans" (ready)="onReady($event)" [editor]="Editor"></ckeditor>
+ -->
+
+<div class="container">
+        
+            
+          
+</div>
+{{modelans.ans}}
+        
+        <div *ngIf="selectedFile" class="img-preview-container">
+        <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
+         [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+        </div>
+
+      <div *ngIf="selectedFile.pending" class="img-loading-overlay">
+        <div class="img-spinning-circle"></div>
+      </div>
+
+      <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> Image Uploaded Succesfuly!</div>
+        <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Image Upload Failed!</div>
+      </div>
+      <h3>Angular 7 Image Preview before Upload:</h3>
+      <span style="color:red;" *ngIf="message">{{message}}</span>
+      <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+      <div>
+        <button type="submit photo" (click)=processFile() class="btn btn-default">Upload Photo</button>
+      </div>
+      <br/>
+      <button type="submit Answer" (click)=addCourse(modelSubTopic.subTopicName,modelans.ans) class="btn btn-default">Submit</button>
+
+
+      </mat-card-content>
+
+
+  <mat-card-actions>
+   
+  </mat-card-actions>
+</mat-card>
+</div>
+
+<!--
+<form #form='ngForm' (ngSubmit)="onSubmit(form)">
+  <div class="form-group"> 
+      <ejs-richtexteditor #fromRTE [(value)]='value' required name="name" (toolbarClick)='ontoolbarClick($event)' [(ngModel)]="modelans.ans" ></ejs-richtexteditor>
+      <button type="submit" ejs-button>Submit</button>
+  </div>
+</form>
+
+-->
+
+
+<!--<input type="text" class="form-control" id="url" [(ngModel)]="modelans.ans" name="url">-->
+           <!-- <ckeditor [(ngModel)]="ans" (ready)="onReady($event)" [editor]="Editor"></ckeditor>
+-->
+
+<!---
+</div>
+</div>
+  <div>
+    <h2>Model:</h2>
+    {{ currentBook }}
+ </div>
+<div fxFlex style="margin-top: 40 ;">
+<div style="margin-top: 40 ;">
+
+</div>
+
+</div>
+
+
+
+</div>
+
+-->
+ <!---
+          <div class="form-group">
+            <label >Course</label>
+            <mat-select  class="form-control"  id="course"
+                    required
+                    [(ngModel)]="model1.courseName" (selectionChange)="loadMasterValues(model1.courseName)"  name="power">
+                    <mat-option value="-Select-">--Select--</mat-option>
+              <mat-option *ngFor="let course of courselist" [value]="course">{{course}}</mat-option>
+            </mat-select>
+          </div>
+
+          <div class="form-group">
+            
+              <label> Topic Name</label>
+              <mat-select  class="form-control"  id="topic"
+                      required
+                      [(ngModel)]="modelTopic.topicName" (selectionChange)="loadMasterValues1(modelTopic.topicName)"  name="topicName">
+                      <mat-option value="-Select-">--Select--</mat-option>
+                <mat-option *ngFor="let topic of topicList                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            " [value]="topic">{{topic}}</mat-option>
+              </mat-select>
+         
+         
+          </div>
+          <div class="form-group">
+            <label>Sub Topic Name</label>
+            <mat-select class="form-control"  id="subTopic"
+                    required
+                    [(ngModel)]="modelSubTopic.subTopicName" name="subTopic">
+              <mat-option *ngFor="let subTopic of SubTopicList" [value]="subTopic">{{subTopic}}</mat-option>
+            </mat-select>
+          </div>
+
+        -->
+
+        <!--
+<label class="image-upload-container btn btn-bwm">
+  <span>Select Image</span>
+  <input #imageInput
+         type="file"
+         accept="image/*"
+         (change)="processFile(imageInput)">
+</label>
+
+-->

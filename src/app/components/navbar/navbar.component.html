@@ -1,0 +1,55 @@
+<div>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+     <span>Crack Interview</span>
+      <span class="example-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="['/java', '1']"> Java </a>
+        <a mat-button  [routerLink]="['/react', '5']"> React </a>
+        <a mat-button [routerLink]="['/angular', '2']"> Angular 7 </a>
+      </div>
+      <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>settings</mat-icon></button>
+      <mat-menu #appMenu="matMenu">
+        <button mat-menu-item (click)="logout()"> Log out </button>
+        <button mat-menu-item> Help </button>
+      </mat-menu>
+      </mat-toolbar-row>
+  </mat-toolbar>
+<div>
+<mat-sidenav-container class="example-container">
+    <!--<mat-sidenav #sidenav class="example-sidenav">
+     <mat-list class="list-nav">
+      <mat-nav-list>
+        <mat-list-item *ngFor="let link of menuItems">
+          <mat-icon>{{link.icon}}</mat-icon>
+            <a class="nav-link" [routerLink]="[link.path]">{{link.title}}</a>
+         </mat-list-item>
+      </mat-nav-list>
+    </mat-list>
+  </mat-sidenav>-->
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+  
+
+
+
+    <!--
+  <mat-menu #javaMenu="matMenu">
+    <button mat-menu-item [routerLink]="'/user-profile'"> 0-2yrs </button>
+    <button mat-menu-item> 2-4yrs </button>
+  </mat-menu>
+  
+  <mat-menu #reactMenu="matMenu">
+     <button mat-menu-item> 0-2yrs </button>
+    <button mat-menu-item> 2-4yrs </button>
+  </mat-menu>
+  <mat-menu #angularMenu="matMenu">
+     <button mat-menu-item> 0-2yrs </button>
+    <button mat-menu-item> 2-4yrs </button>
+  </mat-menu>-->
+
+ <!--<a mat-button [matMenuTriggerFor]="javaMenu" [routerLink]="['/java', '3']"> Java </a>-->
+    <!--<button mat-button (click)="sidenav.open ()" ><mat-icon>menu</mat-icon></button>-->
+       <!-- <a mat-button  [routerLink]="'/java'"> Java </a>-->
